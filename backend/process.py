@@ -31,7 +31,7 @@ def get_data():
         "Labor Conditions (1-5)": [4, 3, 2, 1, 2, 3],
         "Industry Sensitivity (1-5)": [3, 4, 5, 3, 2, 4],
         "Compliance Requirements (1-5)": [3, 5, 4, 2, 3, 4],
-        "IP Status(1-5)": [4, 5, 3, 3, 4, 4],
+        "IP Status (1-5)": [4, 5, 3, 3, 4, 4],
         "Feasibility Score (Target)": [0.7, 0.8, 0.9, 1.0, 0.85, 0.75]
     }
 
