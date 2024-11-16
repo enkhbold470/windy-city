@@ -2,18 +2,10 @@ import type { Metadata } from "next";
 // import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+// import SidebarNav from "@/components/Side-navbar";
 import Footer from "@/components/Footer";
 import { Roboto } from "next/font/google";
-// const geistSans = localFont({
-//   src: "./fonts/GeistVF.woff",
-//   variable: "--font-geist-sans",
-//   weight: "100 900",
-// });
-// const geistMono = localFont({
-//   src: "./fonts/GeistMonoVF.woff",
-//   variable: "--font-geist-mono",
-//   weight: "100 900",
-// });
+
 const roboto = Roboto({
   weight: "400",
   subsets: ["latin"], // Specify the subset to avoid the preload error
@@ -33,7 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${roboto.className} antialiased`}>
         <Navbar />
-
+        {/* <SidebarNav /> */}
         {children}
         <Footer />
       </body>

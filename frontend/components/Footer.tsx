@@ -1,7 +1,7 @@
 "use client";
 export default function Footer() {
   return (
-    <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center my-2 py-2">
+    <footer className="border-t row-start-3 flex gap-6 flex-wrap items-center justify-center my-2 py-2">
       <a
         className="flex items-center gap-2 hover:underline hover:underline-offset-4"
         href="https://github.com/enkhbold470/windy-city"
