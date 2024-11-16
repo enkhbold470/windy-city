@@ -29,11 +29,11 @@ export default function Navbar() {
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center text-2xl font-bold">
           <Link href="/">
-            <a>WindyCity</a>
+            {/* WindyCity */}
             <img
               src="/assets/logowithfont.png"
               alt="WindyCity Logo"
-              className="h-20 w-auto"
+              className="h-14 w-auto"
             />
           </Link>
         </div>
