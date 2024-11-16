@@ -9,9 +9,11 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Control } from "react-hook-form";
+import type { z } from "zod";
+import { formSchema } from "@/schemas/cropFormSchema";
 
 interface SliderFieldProps {
-  control: Control<any>;
+  control: Control<z.infer<typeof formSchema>>;
   name: string;
   label: string;
   min: number;
