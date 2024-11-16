@@ -31,7 +31,7 @@ export const Cover = ({
       );
       setBeamPositions(positions);
     }
-  }, [ref.current]);
+  }, [ref]);
 
   return (
     <div
@@ -212,8 +212,8 @@ export const Beam = ({
 
 export const CircleIcon = ({
   className,
-  delay,
-}: {
+}: // delay
+{
   className?: string;
   delay?: number;
 }) => {

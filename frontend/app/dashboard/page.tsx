@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Bar, Radar } from "react-chartjs-2";
 import { Chart as ChartJS, registerables } from "chart.js";
-import { Search, Help, Download, MessageSquare } from "lucide-react";
+import { Search, Download, MessageSquare } from "lucide-react";
 
 ChartJS.register(...registerables);
 
@@ -12,7 +12,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";

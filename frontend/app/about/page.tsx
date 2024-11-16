@@ -1,14 +1,7 @@
-import Image from "next/image";
 import { ArrowRight, Leaf, Microscope, Sprout } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function About() {
   return (
@@ -46,8 +39,8 @@ export default function About() {
             <p className="text-lg">
               At Windy City, we envision a world where agriculture is
               sustainable, efficient, and capable of meeting the growing global
-              demand for food and materials. We're pioneering the field of plant
-              cell agriculture to make this vision a reality.
+              demand for food and materials. We are pioneering the field of
+              plant cell agriculture to make this vision a reality.
             </p>
           </CardContent>
         </Card>
