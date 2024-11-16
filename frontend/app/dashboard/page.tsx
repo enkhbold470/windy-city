@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { formSchema } from "@/schemas/cropFormSchema";
 import { toast } from "@/hooks/use-toast";
-import { Spinner } from "@/components/ui/spinner"; // Assuming you have a Spinner component
+// import { Spinner } from "@/components/ui/spinner"; // Assuming you have a Spinner component
 
 export default function PlantCropInput() {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -36,7 +36,7 @@ export default function PlantCropInput() {
       </div>
       {isLoading ? ( // Show loading animation while loading
         <div className="flex justify-center">
-          <Spinner /> {/* Loading spinner component */}
+          {/* <Spinner /> Loading spinner component */}
         </div>
       ) : (
         isSubmitted && (

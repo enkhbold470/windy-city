@@ -27,7 +27,14 @@ export default function Navbar() {
   return (
     <header className="border-b overflow-hidden">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <h1 className="text-2xl font-bold">WindyCity</h1>
+      <div className="flex items-center text-2xl font-bold">
+        <img 
+          src="/assets/logowithfont.png" 
+          alt="WindyCity Logo" 
+          className="h-20 w-auto"
+        />
+      </div>
+
         <Tabs defaultValue="home" onValueChange={handleTabChange}>
           <TabsList>
             <TabsTrigger value="home">Home</TabsTrigger>
