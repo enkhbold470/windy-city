@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 export default function Home() {
@@ -11,9 +12,11 @@ export default function Home() {
         AI-driven insights and data analysis.
       </p>
       <div className="text-center">
-        <Button className="bg-blue-600 text-white hover:bg-blue-700 transition duration-300">
-          Get Started
-        </Button>
+        <Link href={"/dashboard"}>
+          <Button className="bg-blue-600 text-white hover:bg-blue-700 transition duration-300">
+            Get Started
+          </Button>
+        </Link>
       </div>
     </div>
   );

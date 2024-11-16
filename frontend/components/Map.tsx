@@ -18,8 +18,8 @@ export default function Map() {
 
         if (mapRef.current) {
           new google.maps.Map(mapRef.current, {
-            center: { lat: -34.397, lng: 150.644 },
-            zoom: 8,
+            center: { lat: 37.5343487, lng: -122.3746215 },
+            zoom: 12,
           });
         }
       } catch (error) {
