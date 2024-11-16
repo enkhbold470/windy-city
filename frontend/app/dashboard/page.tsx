@@ -13,13 +13,7 @@ import { loadingStates } from "@/lib/data";
 import { motion } from "framer-motion";
 export default function PlantCropInput() {
   const [isSubmitted, setIsSubmitted] = useState(false);
-  // progress bar
-
   const [loading, setLoading] = useState(false);
-  // form
-  const form = useForm({
-    resolver: zodResolver(formSchema),
-  });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);

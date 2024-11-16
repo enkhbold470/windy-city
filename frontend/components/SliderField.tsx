@@ -8,29 +8,30 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { Control } from "react-hook-form";
 
 interface SliderFieldProps {
-  control: any;
+  control: Control<any>;
   name: string;
   label: string;
-  description?: string;
   min: number;
   max: number;
   step: number;
   icon?: React.ReactNode;
   suffix?: string;
+  description?: string;
 }
 
 export function SliderField({
   control,
   name,
   label,
-  description,
   min,
   max,
   step,
   icon,
-  suffix = "",
+  suffix,
+  description,
 }: SliderFieldProps) {
   return (
     <FormField
