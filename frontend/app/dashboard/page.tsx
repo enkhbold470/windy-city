@@ -16,7 +16,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Table,
   TableBody,
@@ -103,20 +102,6 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="border-b">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold">GALY Crop Selection AI</h1>
-          <Tabs defaultValue="home">
-            <TabsList>
-              <TabsTrigger value="home">Home</TabsTrigger>
-              <TabsTrigger value="insights">Crop Insights</TabsTrigger>
-              <TabsTrigger value="sources">Data Sources</TabsTrigger>
-              <TabsTrigger value="about">About</TabsTrigger>
-            </TabsList>
-          </Tabs>
-        </div>
-      </header>
-
       <main className="container mx-auto px-4 py-8">
         <div className="flex justify-between items-center mb-8">
           <div className="relative w-1/3">
