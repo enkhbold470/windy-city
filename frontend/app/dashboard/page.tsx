@@ -4,13 +4,13 @@ import Candidates from "@/components/Candidates";
 import Charts from "@/components/Charts";
 import Export from "@/components/Export";
 import CropForm from "@/components/CropForm";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import type { z } from "zod";
 import { formSchema } from "@/schemas/cropFormSchema";
 import { toast } from "@/hooks/use-toast";
 import { MultiStepLoader as Loader } from "@/components/ui/multi-step-loader";
 import { loadingStates } from "@/lib/data";
 import { motion } from "framer-motion";
+
 export default function PlantCropInput() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
