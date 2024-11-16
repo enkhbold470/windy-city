@@ -21,13 +21,14 @@ export default function Navbar() {
   };
 
   return (
-    <header className="border-b">
+    <header className="border-b overflow-hidden">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Windy City</h1>
+        <h1 className="text-2xl font-bold">WindyCity</h1>
         <Tabs defaultValue="home" onValueChange={handleTabChange}>
           <TabsList>
             <TabsTrigger value="home">Home</TabsTrigger>
             <TabsTrigger value="insights">Crop Insights</TabsTrigger>
+            <TabsTrigger value="maps">Geo Location</TabsTrigger>
             <TabsTrigger value="sources">Data Sources</TabsTrigger>
             <TabsTrigger value="about">About</TabsTrigger>
           </TabsList>
