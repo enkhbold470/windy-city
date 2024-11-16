@@ -1,7 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDrag } from '@use-gesture/react';
 import { animated, useSpring } from '@react-spring/web';
 
@@ -26,20 +26,21 @@ export default function WidgetsPage() {
     }
   });
 
-  // Event listeners to toggle dragging on Shift key press
-  const handleKeyDown = (e: KeyboardEvent) => {
-    if (e.key === 'Shift') setDraggingEnabled(true);
-  };
+  // Handle Shift key events
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Shift') setDraggingEnabled(true);
+    };
 
-  const handleKeyUp = (e: KeyboardEvent) => {
-    if (e.key === 'Shift') setDraggingEnabled(false);
-  };
+    const handleKeyUp = (e: KeyboardEvent) => {
+      if (e.key === 'Shift') setDraggingEnabled(false);
+    };
 
-  // Attach and detach event listeners
-  useState(() => {
+    // Add event listeners on mount
     window.addEventListener('keydown', handleKeyDown);
     window.addEventListener('keyup', handleKeyUp);
 
+    // Cleanup event listeners on unmount
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('keyup', handleKeyUp);
