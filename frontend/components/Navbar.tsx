@@ -27,15 +27,16 @@ export default function Navbar() {
   return (
     <header className="border-b overflow-hidden">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-
-      <div className="flex items-center text-2xl font-bold">
-        <img 
-          src="/assets/logowithfont.png" 
-          alt="WindyCity Logo" 
-          className="h-20 w-auto"
-        />
-      </div>
-
+        <div className="flex items-center text-2xl font-bold">
+          <Link href="/">
+            <a>WindyCity</a>
+            <img
+              src="/assets/logowithfont.png"
+              alt="WindyCity Logo"
+              className="h-20 w-auto"
+            />
+          </Link>
+        </div>
 
         <Tabs defaultValue="home" onValueChange={handleTabChange}>
           <TabsList>
