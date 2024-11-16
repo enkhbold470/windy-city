@@ -1,8 +1,9 @@
 "use client";
-import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import FloatingImages from '@/components/FloatingImages';
 import Image from "next/image"; // Importing Image component
+import AnimatedSection from '@/components/AnimatedSection';
 
 export default function Home() {
   // State for the category title and description
@@ -70,17 +71,25 @@ export default function Home() {
 
   const userAvatars = [
     {
-      src: "https://media.licdn.com/dms/image/v2/D5603AQG7_3TKVKyh9Q/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1726541283569?e=1736985600&v=beta&t=NPJ33Tpo-saWeyZzECE94-hmtGPdP90L2v7eRk3N2ls",
-      alt: "User avatar 1",
+      "src": "https://media.licdn.com/dms/image/v2/D5603AQG7_3TKVKyh9Q/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1726541283569?e=1736985600&v=beta&t=NPJ33Tpo-saWeyZzECE94-hmtGPdP90L2v7eRk3N2ls",
+      "alt": "User avatar 1"
     },
     {
-      src: "https://media.licdn.com/dms/image/v2/D5603AQEk7Wkcz7o42w/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1730736646752?e=1736985600&v=beta&t=bq-1SbZBzZ-_sKgAVrOcVyxQ4RaroLUJIlgh1w5vQtg",
-      alt: "User avatar 2",
+      "src": "https://media.licdn.com/dms/image/v2/D5603AQEk7Wkcz7o42w/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1730736646752?e=1736985600&v=beta&t=bq-1SbZBzZ-_sKgAVrOcVyxQ4RaroLUJIlgh1w5vQtg",
+      "alt": "User avatar 2"
     },
     {
-      src: "https://media.licdn.com/dms/image/v2/D5603AQHtKpb9OcC7JQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1705957050541?e=1736985600&v=beta&t=1QuI_AafLUijxOrNt945aDA9vTyWGXO-oRuYpa8p6bg",
-      alt: "User avatar 3",
+      "src": "https://media.licdn.com/dms/image/v2/D5603AQHtKpb9OcC7JQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1705957050541?e=1736985600&v=beta&t=1QuI_AafLUijxOrNt945aDA9vTyWGXO-oRuYpa8p6bg",
+      "alt": "User avatar 3"
     },
+    {
+      "src": "/assets/Mohamed-Abdelmeguid-Headshot.webp",
+      "alt": "User avatar 4"
+    },
+    {
+      "src": "/assets/Nikita-Agrawal-Profile-Photo.jpg",
+      "alt": "User avatar 5"
+    }
   ];
 
   const scrollVariants = {
@@ -96,24 +105,13 @@ export default function Home() {
 
   return (
     <div className="bg-white min-h-screen">
-      <main className="w-full max-w-7xl mx-auto px-6 lg:px-20">
-        {/* Hero Section */}
-        <section className="text-center py-32">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-6 leading-tight">
-            We Make Crop Data Processing A Breeze.
-          </h1>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-10">
-            Growing crops is tough. Making sense of the data shouldn’t be. With
-            our interactive flowchart, you can track, compare, and act—boosting
-            yields and solving problems faster.
-          </p>
-          <div className="flex justify-center">
-            <a href="/dashboard">
-              <Button className="bg-blue-600 text-white hover:bg-blue-700 transition duration-300 px-8 py-4 text-lg">
-                Try it Out!
-              </Button>
-            </a>
-          </div>
+  <main className="w-full max-w-7xl mx-auto px-6 lg:px-20">
+  <FloatingImages />
+    {/* Hero Section */}
+    <section className="text-center pt-96 pb-20">
+      <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-6 leading-tight">
+        <AnimatedSection />
+        </h1>
           <div className="mt-12 flex justify-center items-center text-gray-600">
             <div className="flex items-center space-x-2">
               {userAvatars.map((avatar, index) => (
@@ -127,14 +125,14 @@ export default function Home() {
                 />
               ))}
             </div>
-            <p className="ml-4 text-sm">
+            <p className="ml-10 text-sm">
               Founded in Boston, MA at MIT Energy Hackathon
             </p>
           </div>
         </section>
 
         {/* Scrolling Logos Section */}
-        <section className="py-8 w-1/2 h-3/4 mx-auto">
+        <section className="py-2 w-1/2 h-3/4 mx-auto">
           <div className="bg-background rounded-2xl overflow-hidden relative">
             <motion.div
               className="flex gap-8" // 12px gap between the logos
