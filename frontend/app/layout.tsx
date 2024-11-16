@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 // import SidebarNav from "@/components/Side-navbar";
 import Footer from "@/components/Footer";
 import { Roboto } from "next/font/google";
-
+import { Toaster } from "@/components/ui/toaster";
 const roboto = Roboto({
   weight: "400",
   subsets: ["latin"], // Specify the subset to avoid the preload error
@@ -27,6 +27,7 @@ export default function RootLayout({
         <Navbar />
         {/* <SidebarNav /> */}
         {children}
+        <Toaster />
         <Footer />
       </body>
     </html>
