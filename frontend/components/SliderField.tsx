@@ -44,7 +44,7 @@ export function SliderField({
           <FormControl>
             <div className="flex items-center space-x-4">
               {icon}
-              <Progress value={(field.value / (max || 100)) * 100} />
+              <Progress value={(Number(field.value) / (max || 100)) * 100} />
               <span className="w-12 text-center">
                 {Number(field.value) || min}
                 {suffix}

@@ -13,13 +13,57 @@ import { useState, useEffect } from "react";
 
 import { radarData, barData } from "@/lib/data";
 
-export default function Charts({ data = null }) {
-  const [animatedRadarData, setAnimatedRadarData] = useState({
+// Add interface for props
+interface ChartProps {
+  data: {
+    radar: {
+      labels: string[];
+      datasets: {
+        label: string;
+        data: number[];
+        backgroundColor: string;
+        borderColor: string;
+        borderWidth: number;
+      }[];
+    };
+    bar: {
+      labels: string[];
+      datasets: {
+        label: string;
+        data: number[];
+        backgroundColor: string;
+        borderColor: string;
+        borderWidth: number;
+      }[];
+    };
+  } | null;
+}
+
+export default function Charts({ data = null }: ChartProps) {
+  const [animatedRadarData, setAnimatedRadarData] = useState<{
+    labels: string[];
+    datasets: {
+      label: string;
+      data: number[];
+      backgroundColor: string;
+      borderColor: string;
+      borderWidth: number;
+    }[];
+  }>({
     labels: [],
     datasets: [],
   });
 
-  const [animatedBarData, setAnimatedBarData] = useState({
+  const [animatedBarData, setAnimatedBarData] = useState<{
+    labels: string[];
+    datasets: {
+      label: string;
+      data: number[];
+      backgroundColor: string;
+      borderColor: string;
+      borderWidth: number;
+    }[];
+  }>({
     labels: [],
     datasets: [],
   });
@@ -51,8 +95,8 @@ export default function Charts({ data = null }) {
       ],
     };
 
-    setAnimatedRadarData(radarAnimation);
-    setAnimatedBarData(barAnimation);
+    setAnimatedRadarData(radarAnimation as any);
+    setAnimatedBarData(barAnimation as any);
 
     // Animate over 3 seconds
     const startTime = Date.now();
@@ -64,7 +108,7 @@ export default function Charts({ data = null }) {
 
       // Update radar data
       setAnimatedRadarData({
-        labels: chartData.radar.labels,
+        labels: chartData.radar.labels as any,
         datasets: chartData.radar.datasets.map((dataset) => ({
           ...dataset,
           data: dataset.data.map((value) => value * progress),
@@ -73,13 +117,13 @@ export default function Charts({ data = null }) {
 
       // Update bar data
       setAnimatedBarData({
-        labels: chartData.bar.labels,
+        labels: chartData.bar.labels as any,
         datasets: [
           {
             ...chartData.bar.datasets[0],
             data: chartData.bar.datasets[0].data.map(
               (value) => value * progress
-            ),
+            ) as any,
           },
         ],
       });
