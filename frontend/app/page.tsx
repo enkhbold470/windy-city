@@ -1,13 +1,20 @@
 import { Cover } from "@/components/ui/cover";
 import { Button } from "@/components/ui/button";
+
 export default function Home() {
   return (
-    <div className=" h-screen  border">
-      <h1 className="my-10  text-4xl md:text-4xl lg:text-6xl font-semibold max-w-7xl mx-auto text-center mt-6 relative z-20 py-12 bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-neutral-700 to-neutral-700 dark:from-neutral-800 dark:via-white dark:to-white">
-        Find plant crop insight <br /> at <Cover>warp speed</Cover>
+    <div className="h-screen flex flex-col justify-center items-center">
+      <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center text-gray-800 max-w-2xl mx-auto mb-6">
+        Discover Insights on Plant Crops <br /> at <Cover>Warp Speed</Cover>
       </h1>
-      <div className="text-center p-10 my-10">
-        <Button>Get Started</Button>
+      <p className="text-lg text-gray-600 text-center max-w-md mx-auto mb-8">
+        Unlock the potential of your agricultural practices with our advanced
+        AI-driven insights and data analysis.
+      </p>
+      <div className="text-center">
+        <Button className="bg-blue-600 text-white hover:bg-blue-700 transition duration-300">
+          Get Started
+        </Button>
       </div>
     </div>
   );
