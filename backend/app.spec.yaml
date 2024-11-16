@@ -1,0 +1,15 @@
+name: windy-city-backend
+services:
+  - name: api
+    github:
+      repo: your-repo/windy-city
+      branch: main
+      deploy_on_push: true
+    source_dir: backend
+    http_port: 8080
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    health_check:
+      http_path: /health
+    routes:
+      - path: /
