@@ -7,13 +7,13 @@ from sklearn.pipeline import Pipeline
 from sklearn.metrics import mean_squared_error, r2_score
 
 def get_crop_feasibility():
-    df = step_1()
-    crop_feasibility_data = step_2_3_4_5(df)
+    df = get_data()
+    crop_feasibility_data = model_develop(df)
     # Return the JSON response
     return jsonify(crop_feasibility_data)
     
 
-def step_1():
+def get_data():
     # Step 1: Create Dummy Data with New Attributes
     data = {
         "Crop Name": ["Cotton", "Cacao", "Soybean", "Banana", "Rice", "Coffee"],
@@ -49,7 +49,7 @@ def step_1():
     return df
 
 
-def step_2_3_4_5(df):
+def model_develop(df):
     # Step 2: Data Preprocessing
     X = df.drop(columns=["Crop Name", "Feasibility Score (Target)"])
     y = df["Feasibility Score (Target)"]
