@@ -27,6 +27,7 @@ export default function PlantCropInput() {
 
   return (
     <div className="space-y-8 mx-20">
+
       <Loader
         loadingStates={loadingStates}
         loading={loading}
@@ -48,6 +49,7 @@ export default function PlantCropInput() {
             animate={{ opacity: 1 }}
             transition={{ duration: 2 }}
           >
+
             <Candidates />
             <Charts />
             <Export />
