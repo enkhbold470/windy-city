@@ -1,12 +1,6 @@
-from flask import Flask
+from flask import Flask, jsonify, request
 import process
-from flask import Flask, jsonify
 import pandas as pd
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-from sklearn.pipeline import Pipeline
-from sklearn.metrics import mean_squared_error, r2_score
 
 app = Flask(__name__)
 
@@ -14,6 +8,15 @@ app = Flask(__name__)
 def home():
     output = process.get_crop_feasibility()
     return output
+
+@app.route("/api/update", methods=["POST"])
+def update():
+    data = request.json
+    # Convert the received data to a DataFrame
+    new_data = pd.DataFrame(data)
+    # Get predictions using the model
+    predictions = process.model_develop(process.get_data(), new_data)  # Assuming `process.get_data()` returns the existing data
+    return jsonify(predictions)  # Return predictions in the correct format
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001)
