@@ -16,6 +16,7 @@ import { Roboto } from "next/font/google";
 // });
 const roboto = Roboto({
   weight: "400",
+  subsets: ["latin"], // Specify the subset to avoid the preload error
 });
 
 export const metadata: Metadata = {
@@ -30,7 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${roboto.className} ${roboto.className} antialiased`}>
+      <body className={`${roboto.className} antialiased`}>
         <Navbar />
 
         {children}
