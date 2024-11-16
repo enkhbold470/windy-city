@@ -16,15 +16,15 @@ export default function Navbar() {
     if (value === "sources") {
       router.push("/sources");
     }
-    if (value === "geo") {
-      router.push("/geo");
-    }
+    // if (value === "geo") {
+    //   router.push("/geo");
+    // }
     if (value === "about") {
       router.push("/about");
     }
-    if (value === "widgets") {
-      router.push("/widgets");
-    }
+    // if (value === "widgets") {
+    //   router.push("/widgets");
+    // }
   };
 
   return (
@@ -46,9 +46,9 @@ export default function Navbar() {
             <TabsTrigger value="home">Home</TabsTrigger>
             <TabsTrigger value="insights">Crop Insights</TabsTrigger>
             <TabsTrigger value="sources">Data Sources</TabsTrigger>
-            <TabsTrigger value="geo">Geo Location</TabsTrigger>
+            {/* <TabsTrigger value="geo">Geo Location</TabsTrigger> */}
             <TabsTrigger value="about">About</TabsTrigger>
-            <TabsTrigger value="widgets">Widgets</TabsTrigger>
+            {/* <TabsTrigger value="widgets">Widgets</TabsTrigger> */}
           </TabsList>
         </Tabs>
       </div>

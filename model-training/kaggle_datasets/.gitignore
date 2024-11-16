@@ -1,0 +1,7 @@
+.env
+*.csv
+*.json
+*.zip
+*.tgz
+*.tar.gz
+*.tar.bz2
