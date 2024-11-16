@@ -8,10 +8,13 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { Control } from "react-hook-form";
+import type { z } from "zod";
+import { formSchema } from "@/schemas/cropFormSchema";
 
 interface TemperatureFieldProps {
-  control: any;
-  name: string;
+  control: Control<z.infer<typeof formSchema>>;
+  name: "temperatureRange.min" | "temperatureRange.max"; // Updated to restrict name to specific values
   label: string;
 }
 

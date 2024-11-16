@@ -69,3 +69,30 @@ export const barData = {
     },
   ],
 };
+
+export const loadingStates = [
+  {
+    text: "Assessing soil quality",
+  },
+  {
+    text: "Evaluating water availability",
+  },
+  {
+    text: "Analyzing climate conditions",
+  },
+  {
+    text: "Calculating growth potential",
+  },
+  {
+    text: "Estimating market demand",
+  },
+  {
+    text: "Reviewing pest resistance",
+  },
+  {
+    text: "Finalizing feasibility report",
+  },
+  {
+    text: "Ready for planting decision",
+  },
+];
