@@ -9,10 +9,43 @@ import { loadingStates } from "@/lib/data";
 import { motion } from "framer-motion";
 import type { z } from "zod";
 
+// Define types for API response
+interface CropData {
+  crop_name: string;
+  technical_score: number;
+  market_score: number;
+  esg_score: number;
+  regulatory_score: number;
+  predicted_feasibility: number;
+}
+
+interface ApiResponse {
+  crops: CropData[];
+}
+
+// Define types for the chart data
+interface ChartDataset {
+  label: string;
+  data: number[];
+  backgroundColor: string;
+  borderColor: string;
+  borderWidth: number;
+}
+
+interface ChartData {
+  labels: string[];
+  datasets: ChartDataset[];
+}
+
+interface CombinedChartData {
+  radar: ChartData;
+  bar: ChartData;
+}
+
 export default function PlantCropInput() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [chartData, setChartData] = useState(null);
+  const [chartData, setChartData] = useState<CombinedChartData | null>(null);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setLoading(true);
@@ -30,11 +63,11 @@ export default function PlantCropInput() {
         throw new Error("Network response was not ok");
       }
 
-      const data = await response.json();
+      const data: ApiResponse = await response.json();
       setChartData({
         radar: {
           labels: ["Technical", "Market", "ESG", "Regulatory"],
-          datasets: data.crops.map((crop) => ({
+          datasets: data.crops.map((crop: CropData) => ({
             label: crop.crop_name,
             data: [
               crop.technical_score,
@@ -48,11 +81,13 @@ export default function PlantCropInput() {
           })),
         },
         bar: {
-          labels: data.crops.map((crop) => crop.crop_name),
+          labels: data.crops.map((crop: CropData) => crop.crop_name),
           datasets: [
             {
               label: "Feasibility Score",
-              data: data.crops.map((crop) => crop.predicted_feasibility),
+              data: data.crops.map(
+                (crop: CropData) => crop.predicted_feasibility
+              ),
               backgroundColor: "rgba(75, 192, 192, 0.6)",
               borderColor: "rgba(75, 192, 192, 1)",
               borderWidth: 1,
@@ -100,7 +135,14 @@ export default function PlantCropInput() {
           animate={{ opacity: 1 }}
           transition={{ duration: 2 }}
         >
-          <Charts data={chartData} />
+          <Charts
+            data={
+              chartData || {
+                radar: { labels: [], datasets: [] },
+                bar: { labels: [], datasets: [] },
+              }
+            }
+          />
         </motion.div>
       ) : (
         <CropForm onSubmit={onSubmit} />
