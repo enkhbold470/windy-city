@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+</head>
+<body>
+    <h1>File Upload Demo</h1>
+    <form id="uploadForm">
+        <input type="file" id="filesInput" name="files" multiple>
+        <button type="button" onclick="uploadFiles()">Upload</button>
+    </form>
+    <div id="response"></div>
+
+    <script>
+        async function uploadFiles() {
+            const formData = new FormData();
+            const files = document.getElementById('filesInput').files;
+
+            for (let i = 0; i < files.length; i++) {
+                formData.append('files', files[i]);
+            }
+
+            try {
+                const response = await fetch('http://127.0.0.1:5000/process', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const result = await response.json();
+                document.getElementById('response').innerHTML = `
+                    <h2>Backend Response:</h2>
+                    <pre>${JSON.stringify(result, null, 2)}</pre>
+                `;
+            } catch (error) {
+                console.error('Error uploading files:', error);
+                document.getElementById('response').innerHTML = `
+                    <p style="color: red;">Error: ${error.message}</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
