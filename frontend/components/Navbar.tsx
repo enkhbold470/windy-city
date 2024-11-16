@@ -22,6 +22,9 @@ export default function Navbar() {
     if (value === "about") {
       router.push("/about");
     }
+    if (value === "widgets") {
+      router.push("/widgets");
+    }
   };
 
   return (
@@ -45,6 +48,7 @@ export default function Navbar() {
             <TabsTrigger value="sources">Data Sources</TabsTrigger>
             <TabsTrigger value="geo">Geo Location</TabsTrigger>
             <TabsTrigger value="about">About</TabsTrigger>
+            <TabsTrigger value="widgets">Widgets</TabsTrigger>
           </TabsList>
         </Tabs>
       </div>
