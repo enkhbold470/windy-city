@@ -8,9 +8,10 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { Control } from "react-hook-form";
 
 interface TemperatureFieldProps {
-  control: any;
+  control: Control<any>;
   name: string;
   label: string;
 }
