@@ -8,34 +8,50 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { Control } from "react-hook-form";
+import type { z } from "zod";
+import { formSchema } from "@/schemas/cropFormSchema";
 
 interface SliderFieldProps {
-  control: any;
+  control: Control<z.infer<typeof formSchema>>;
   name: string;
   label: string;
-  description?: string;
   min: number;
   max: number;
   step: number;
   icon?: React.ReactNode;
   suffix?: string;
+  description?: string;
 }
 
 export function SliderField({
   control,
   name,
   label,
-  description,
   min,
   max,
   step,
   icon,
-  suffix = "",
+  suffix,
+  description,
 }: SliderFieldProps) {
   return (
     <FormField
       control={control}
-      name={name}
+      name={
+        name as
+          | "cropName"
+          | "cropType"
+          | "growthDuration"
+          | "waterRequirement"
+          | "temperatureRange"
+          | "sunlightRequirement"
+          | "windResistance"
+          | "geneticModification"
+          | "additionalNotes"
+          | "temperatureRange.min"
+          | "temperatureRange.max"
+      }
       render={({ field }) => (
         <FormItem>
           <FormLabel>{label}</FormLabel>
@@ -46,11 +62,11 @@ export function SliderField({
                 min={min}
                 max={max}
                 step={step}
-                value={[field.value]}
+                value={[Number(field.value) || min]}
                 onValueChange={(value) => field.onChange(value[0])}
               />
               <span className="w-12 text-center">
-                {field.value}
+                {Number(field.value) || min}
                 {suffix}
               </span>
             </div>

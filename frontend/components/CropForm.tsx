@@ -1,6 +1,5 @@
 // components/CropForm.tsx
 "use client";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Droplet, Sun, Wind } from "lucide-react";
@@ -23,7 +22,7 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { toast } from "@/hooks/use-toast";
+import type { z } from "zod"; // Import z as a type
 import { formSchema } from "../schemas/cropFormSchema";
 import { SliderField } from "./SliderField";
 import { TemperatureField } from "./TemperatureField";

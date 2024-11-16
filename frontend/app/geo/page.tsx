@@ -1,4 +1,4 @@
-import Map from "@/components/Map";
+// import Map from "@/components/Map";
 
 export default function Maps() {
   return (
@@ -9,7 +9,7 @@ export default function Maps() {
       </p>
       <div className="map-container">
         {/* Placeholder for map component */}
-        <Map />
+        {/* <Map /> */}
       </div>
     </div>
   );
