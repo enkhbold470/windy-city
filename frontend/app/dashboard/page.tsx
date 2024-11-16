@@ -10,6 +10,7 @@ import { formSchema } from "@/schemas/cropFormSchema";
 import { toast } from "@/hooks/use-toast";
 import { MultiStepLoader as Loader } from "@/components/ui/multi-step-loader";
 import { loadingStates } from "@/lib/data";
+import { motion } from "framer-motion";
 export default function PlantCropInput() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   // progress bar
@@ -32,10 +33,6 @@ export default function PlantCropInput() {
 
   return (
     <div className="space-y-8 mx-20">
-      <div className="flex justify-between">
-        <CropForm onSubmit={onSubmit} />
-        <CropForm onSubmit={onSubmit} />
-      </div>
       <Loader
         loadingStates={loadingStates}
         loading={loading}
@@ -50,12 +47,28 @@ export default function PlantCropInput() {
           Done
         </button>
       )}
-      {isSubmitted && (
+      {(isSubmitted && (
         <>
-          <Candidates />
-          <Charts />
-          <Export />
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 2 }}
+          >
+            <Candidates />
+            <Charts />
+            <Export />
+          </motion.div>
         </>
+      )) || (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 2 }}
+          className="flex justify-between"
+        >
+          <CropForm onSubmit={onSubmit} />
+          <CropForm onSubmit={onSubmit} />
+        </motion.div>
       )}
     </div>
   );

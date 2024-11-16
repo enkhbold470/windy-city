@@ -72,27 +72,27 @@ export const barData = {
 
 export const loadingStates = [
   {
-    text: "Buying a condo",
+    text: "Assessing soil quality",
   },
   {
-    text: "Travelling in a flight",
+    text: "Evaluating water availability",
   },
   {
-    text: "Meeting Tyler Durden",
+    text: "Analyzing climate conditions",
   },
   {
-    text: "He makes soap",
+    text: "Calculating growth potential",
   },
   {
-    text: "We goto a bar",
+    text: "Estimating market demand",
   },
   {
-    text: "Start a fight",
+    text: "Reviewing pest resistance",
   },
   {
-    text: "We like it",
+    text: "Finalizing feasibility report",
   },
   {
-    text: "Welcome to F**** C***",
+    text: "Ready for planting decision",
   },
 ];
