@@ -15,20 +15,19 @@ def home():
 @app.route("/api/update", methods=["POST"])
 def update():
     data = request.json
-
+    print(data)
     # Generate random scores for demonstration
-    crops = ["Cotton", "Soybean", "Rice", "Wheat", "Corn"]
     response_data = {
         "crops": [
             {
-                "crop_name": crop,
+                "crop_name": crop["crop_name"],
                 "technical_score": random.uniform(0.6, 0.9),
                 "market_score": random.uniform(0.6, 0.9),
                 "esg_score": random.uniform(0.6, 0.9),
                 "regulatory_score": random.uniform(0.6, 0.9),
                 "predicted_feasibility": random.uniform(0.7, 0.95)
             }
-            for crop in crops
+            for crop in data["crops"]
         ]
     }
 
