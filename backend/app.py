@@ -1,8 +1,11 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS  # Add CORS support
 import process
 import pandas as pd
+import random
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes
 
 @app.route('/')
 def home():
@@ -12,11 +15,24 @@ def home():
 @app.route("/api/update", methods=["POST"])
 def update():
     data = request.json
-    # Convert the received data to a DataFrame
-    new_data = pd.DataFrame(data)
-    # Get predictions using the model
-    predictions = process.model_develop(process.get_data(), new_data)  # Assuming `process.get_data()` returns the existing data
-    return jsonify(predictions)  # Return predictions in the correct format
+
+    # Generate random scores for demonstration
+    crops = ["Cotton", "Soybean", "Rice", "Wheat", "Corn"]
+    response_data = {
+        "crops": [
+            {
+                "crop_name": crop,
+                "technical_score": random.uniform(0.6, 0.9),
+                "market_score": random.uniform(0.6, 0.9),
+                "esg_score": random.uniform(0.6, 0.9),
+                "regulatory_score": random.uniform(0.6, 0.9),
+                "predicted_feasibility": random.uniform(0.7, 0.95)
+            }
+            for crop in crops
+        ]
+    }
+
+    return jsonify(response_data)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5001)
+    app.run(host='0.0.0.0', port=5000, debug=True)

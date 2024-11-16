@@ -1,33 +1,85 @@
 "use client";
 import { useState } from "react";
-import Candidates from "@/components/Candidates";
 import Charts from "@/components/Charts";
-import Export from "@/components/Export";
 import CropForm from "@/components/CropForm";
-import type { z } from "zod";
 import { formSchema } from "@/schemas/cropFormSchema";
 import { toast } from "@/hooks/use-toast";
 import { MultiStepLoader as Loader } from "@/components/ui/multi-step-loader";
 import { loadingStates } from "@/lib/data";
 import { motion } from "framer-motion";
+import type { z } from "zod";
 
 export default function PlantCropInput() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [chartData, setChartData] = useState(null);
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     setLoading(true);
-    toast({
-      title: "Crop data submitted",
-      description: "Your crop data has been sent for evaluation.",
-    });
-    setIsSubmitted(true);
+
+    try {
+      const response = await fetch("http://localhost:5000/api/update", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+      setChartData({
+        radar: {
+          labels: ["Technical", "Market", "ESG", "Regulatory"],
+          datasets: data.crops.map((crop) => ({
+            label: crop.crop_name,
+            data: [
+              crop.technical_score,
+              crop.market_score,
+              crop.esg_score,
+              crop.regulatory_score,
+            ],
+            backgroundColor: "rgba(255, 99, 132, 0.2)",
+            borderColor: "rgba(255, 99, 132, 1)",
+            borderWidth: 1,
+          })),
+        },
+        bar: {
+          labels: data.crops.map((crop) => crop.crop_name),
+          datasets: [
+            {
+              label: "Feasibility Score",
+              data: data.crops.map((crop) => crop.predicted_feasibility),
+              backgroundColor: "rgba(75, 192, 192, 0.6)",
+              borderColor: "rgba(75, 192, 192, 1)",
+              borderWidth: 1,
+            },
+          ],
+        },
+      });
+
+      toast({
+        title: "Crop data submitted",
+        description: "Your crop data has been sent for evaluation.",
+      });
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error("Error:", error);
+      toast({
+        title: "Error",
+        description: "Failed to submit crop data. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
-    <div className="space-y-8 mx-20">
-
+    <div className="my-5 py-8 mx-20 gap-4">
       <Loader
         loadingStates={loadingStates}
         loading={loading}
@@ -42,29 +94,16 @@ export default function PlantCropInput() {
           Done
         </button>
       )}
-      {(isSubmitted && (
-        <>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 2 }}
-          >
-
-            <Candidates />
-            <Charts />
-            <Export />
-          </motion.div>
-        </>
-      )) || (
+      {isSubmitted ? (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 2 }}
-          className="flex justify-between"
         >
-          <CropForm onSubmit={onSubmit} />
-          <CropForm onSubmit={onSubmit} />
+          <Charts data={chartData} />
         </motion.div>
+      ) : (
+        <CropForm onSubmit={onSubmit} />
       )}
     </div>
   );

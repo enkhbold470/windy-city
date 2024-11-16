@@ -1,5 +1,4 @@
 // components/SliderField.tsx
-import { Slider } from "@/components/ui/slider";
 import {
   FormControl,
   FormDescription,
@@ -11,13 +10,14 @@ import {
 import { Control } from "react-hook-form";
 import type { z } from "zod";
 import { formSchema } from "@/schemas/cropFormSchema";
+import { Progress } from "@/components/ui/progress";
 
 interface SliderFieldProps {
   control: Control<z.infer<typeof formSchema>>;
   name: string;
   label: string;
   min: number;
-  max: number;
+  max?: number;
   step: number;
   icon?: React.ReactNode;
   suffix?: string;
@@ -30,7 +30,6 @@ export function SliderField({
   label,
   min,
   max,
-  step,
   icon,
   suffix,
   description,
@@ -38,33 +37,14 @@ export function SliderField({
   return (
     <FormField
       control={control}
-      name={
-        name as
-          | "cropName"
-          | "cropType"
-          | "growthDuration"
-          | "waterRequirement"
-          | "temperatureRange"
-          | "sunlightRequirement"
-          | "windResistance"
-          | "geneticModification"
-          | "additionalNotes"
-          | "temperatureRange.min"
-          | "temperatureRange.max"
-      }
+      name={name as keyof z.infer<typeof formSchema>}
       render={({ field }) => (
         <FormItem>
           <FormLabel>{label}</FormLabel>
           <FormControl>
             <div className="flex items-center space-x-4">
               {icon}
-              <Slider
-                min={min}
-                max={max}
-                step={step}
-                value={[Number(field.value) || min]}
-                onValueChange={(value) => field.onChange(value[0])}
-              />
+              <Progress value={(field.value / (max || 100)) * 100} />
               <span className="w-12 text-center">
                 {Number(field.value) || min}
                 {suffix}

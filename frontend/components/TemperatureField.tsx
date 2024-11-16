@@ -26,7 +26,7 @@ export function TemperatureField({
   return (
     <FormField
       control={control}
-      name={name}
+      name={name as keyof z.infer<typeof formSchema>}
       render={({ field }) => (
         <FormItem>
           <FormLabel>{label}</FormLabel>
