@@ -14,7 +14,7 @@ import { formSchema } from "@/schemas/cropFormSchema";
 
 interface TemperatureFieldProps {
   control: Control<z.infer<typeof formSchema>>;
-  name: string;
+  name: "temperatureRange.min" | "temperatureRange.max"; // Updated to restrict name to specific values
   label: string;
 }
 
