@@ -1,5 +1,4 @@
 "use client";
-import { Github } from "lucide-react";
 export default function Footer() {
   return (
     <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center my-2 py-2">
