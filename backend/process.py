@@ -3,18 +3,18 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
-import joblib  # For saving and loading the model
+import joblib
 
 # Initialize model as None
 model = None
 
 def get_crop_feasibility():
     df = get_data()
-    crop_feasibility_data = model_develop(df)  # Use the trained model for predictions
+    crop_feasibility_data = model_develop(df) 
     return crop_feasibility_data
 
 def get_data():
-    # Create your data (this part can stay as is)
+    # Create data 
     data = {
         "Crop Name": ["Cotton", "Cacao", "Soybean", "Banana", "Rice", "Coffee"],
         "State of the Art (1-5)": [4, 5, 3, 3, 4, 4],
@@ -45,7 +45,7 @@ def model_develop(df, new_data=None):
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-    # Step 2: Build and Train the Model (only once when the server starts)
+    # Step 2: Build and Train the Model
     global model
     if model is None:
         pipeline = Pipeline([
