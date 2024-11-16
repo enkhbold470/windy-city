@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-// import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-// import SidebarNav from "@/components/Side-navbar";
 import Footer from "@/components/Footer";
 import { Roboto } from "next/font/google";
 import { Toaster } from "@/components/ui/toaster";
+import { ClerkProvider } from "@clerk/nextjs";
+
 const roboto = Roboto({
   weight: "400",
-  subsets: ["latin"], // Specify the subset to avoid the preload error
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -22,14 +22,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${roboto.className} antialiased`}>
-        <Navbar />
-        {/* <SidebarNav /> */}
-        {children}
-        <Toaster />
-        <Footer />
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={`${roboto.className} antialiased`}>
+          <Navbar />
+          {children}
+          <Toaster />
+          <Footer />
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

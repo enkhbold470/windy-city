@@ -1,7 +1,8 @@
 "use client";
 import Link from "next/link";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useRouter } from "next/navigation"; // Changed import from 'next/router' to 'next/navigation'
+import { useRouter } from "next/navigation";
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 export default function Navbar() {
   const router = useRouter();
@@ -51,6 +52,21 @@ export default function Navbar() {
             {/* <TabsTrigger value="widgets">Widgets</TabsTrigger> */}
           </TabsList>
         </Tabs>
+        <div>
+          <SignedOut>
+            <SignInButton mode="modal">
+              <button
+                type="button"
+                className="bg-blue-500 text-white px-4 py-1 rounded-md"
+              >
+                Login
+              </button>
+            </SignInButton>
+          </SignedOut>
+          <SignedIn>
+            <UserButton afterSignOutUrl="/" />
+          </SignedIn>
+        </div>
       </div>
     </header>
   );
