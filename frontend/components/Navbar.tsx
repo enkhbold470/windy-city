@@ -30,7 +30,7 @@ export default function Navbar() {
         <div className="flex items-center text-2xl font-bold">
           <Link href="/">
             <a>WindyCity</a>
-            <img
+            <Image
               src="/assets/logowithfont.png"
               alt="WindyCity Logo"
               className="h-20 w-auto"
