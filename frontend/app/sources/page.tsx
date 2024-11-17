@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Search, ExternalLink, Download, Filter } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -27,49 +27,55 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import ResearchPaperSuggestions from "@/components/research-paper-suggestions";
+// Function to generate random data sources
+const generateRandomDataSources = () => {
+  const names = [
+    "World Bank Commodities Data",
+    "FAO Crop Production Statistics",
+    "USDA Agricultural Research Service",
+    "PubMed Central",
+    "EPA Environmental Datasets",
+    "NASA Earth Observations",
+    "OECD Economic Outlook",
+    "UNESCO Education Statistics",
+    "WHO Health Data",
+    "IMF Financial Data",
+  ];
 
-// Mock data for demonstration
-const dataSources = [
-  {
-    id: 1,
-    name: "World Bank Commodities Data",
-    type: "Economic",
-    url: "https://www.worldbank.org/en/research/commodity-markets",
-    lastUpdated: "2023-11-15",
-  },
-  {
-    id: 2,
-    name: "FAO Crop Production Statistics",
-    type: "Agricultural",
-    url: "http://www.fao.org/faostat/en/#data/QC",
-    lastUpdated: "2023-10-30",
-  },
-  {
-    id: 3,
-    name: "USDA Agricultural Research Service",
-    type: "Scientific",
-    url: "https://www.ars.usda.gov/",
-    lastUpdated: "2023-11-01",
-  },
-  {
-    id: 4,
-    name: "PubMed Central",
-    type: "Scientific",
-    url: "https://www.ncbi.nlm.nih.gov/pmc/",
-    lastUpdated: "2023-11-20",
-  },
-  {
-    id: 5,
-    name: "EPA Environmental Datasets",
-    type: "Environmental",
-    url: "https://www.epa.gov/environmental-topics/environmental-information-location",
-    lastUpdated: "2023-09-28",
-  },
-];
+  // Shuffle the names array
+  const shuffledNames = names.sort(() => Math.random() - 0.5);
+
+  const types = [
+    "Economic",
+    "Agricultural",
+    "Scientific",
+    "Environmental",
+    "Health",
+    "Educational",
+  ];
+
+  return shuffledNames.map((name, index) => ({
+    id: index + 1,
+    name,
+    type: types[Math.floor(Math.random() * types.length)],
+    url: `https://datasetsearch.research.google.com/search?src=0&query=${name
+      .replace(/\s+/g, "-")
+      .toLowerCase()}`,
+    lastUpdated: new Date(Date.now() - Math.floor(Math.random() * 10000000000))
+      .toISOString()
+      .split("T")[0],
+  }));
+};
 
 export default function DataSources() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
+  const [dataSources, setDataSources] = useState(generateRandomDataSources());
+
+  useEffect(() => {
+    setDataSources(generateRandomDataSources());
+  }, []);
 
   const filteredSources = dataSources.filter(
     (source) =>
@@ -188,6 +194,9 @@ export default function DataSources() {
           </Table>
         </CardContent>
       </Card>
+      <div className="mt-8">
+        <ResearchPaperSuggestions />
+      </div>
     </div>
   );
 }

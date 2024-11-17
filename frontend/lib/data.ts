@@ -96,3 +96,52 @@ export const loadingStates = [
     text: "Ready for planting decision",
   },
 ];
+
+export const mockPapers = [
+  {
+    id: 1,
+    title: "Advances in Cotton Cell Culture Techniques",
+    authors: "Smith, J., et al.",
+    year: 2023,
+    journal: "Plant Cell Reports",
+    score: 0.95,
+    url: "https://scholar.google.com/scholar?hl=en&as_sdt=0%2C22&q=Advances+in+Cotton+Cell+Culture+Techniques",
+  },
+  {
+    id: 2,
+    title: "Genetic Modification of Soybean for Enhanced Protein Content",
+    authors: "Johnson, A., et al.",
+    year: 2022,
+    journal: "Crop Science",
+    score: 0.89,
+    url: "https://scholar.google.com/scholar?hl=en&as_sdt=0%2C22&q=Genetic+Modification+of+Soybean+for+Enhanced+Protein+Content",
+  },
+  {
+    id: 3,
+    title:
+      "Optimizing Growth Conditions for Rice in Liquid Suspension Cultures",
+    authors: "Lee, S., et al.",
+    year: 2023,
+    journal: "In Vitro Cellular & Developmental Biology - Plant",
+    score: 0.87,
+    url: "https://scholar.google.com/scholar?hl=en&as_sdt=0%2C22&q=Optimizing+Growth+Conditions+for+Rice+in+Liquid+Suspension+Cultures",
+  },
+  {
+    id: 4,
+    title: "Novel Approaches to Wheat Embryo Culture",
+    authors: "Garcia, M., et al.",
+    year: 2021,
+    journal: "Plant Cell, Tissue and Organ Culture",
+    score: 0.82,
+    url: "https://scholar.google.com/scholar?hl=en&as_sdt=0%2C22&q=Novel+Approaches+to+Wheat+Embryo+Culture",
+  },
+  {
+    id: 5,
+    title: "Improving Corn Yield Through Cell Culture Techniques",
+    authors: "Brown, R., et al.",
+    year: 2022,
+    journal: "Agronomy Journal",
+    score: 0.78,
+    url: "https://scholar.google.com/scholar?hl=en&as_sdt=0%2C22&q=Improving+Corn+Yield+Through+Cell+Culture+Techniques",
+  },
+];
