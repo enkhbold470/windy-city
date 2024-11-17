@@ -1,12 +1,14 @@
 from flask import Flask, jsonify, request
-from flask_cors import CORS
+from flask_cors import CORS  # Add CORS support
 import process
+import pandas as pd
+import random
 import logging
 import os
 from werkzeug.exceptions import BadRequest
 
 app = Flask(__name__)
-CORS(app)
+CORS(app)  # Enable CORS for all routes
 
 # Configure logging
 logging.basicConfig(
@@ -37,27 +39,22 @@ def home():
 def update():
     try:
         data = request.json
-        if not data or "cropName" not in data:
-            logging.warning("Bad request: Missing cropName")
-            return jsonify({"error": "Missing cropName in request data"}), 400
 
-        crop_name = data.get("cropName", "Unknown")
-        if crop_name not in VALID_CROPS:
-            logging.warning(f"Invalid crop name: {crop_name}")
-            return jsonify({"error": "Invalid crop name"}), 400
-
+        # Generate random scores for demonstration
         response_data = {
             "crops": [
                 {
-                    "crop_name": crop_name,
-                    "technical_score": process.get_scores(crop_name)["technical"],
-                    "market_score": process.get_scores(crop_name)["market"],
-                    "esg_score": process.get_scores(crop_name)["esg"],
-                    "regulatory_score": process.get_scores(crop_name)["regulatory"],
-                    "predicted_feasibility": process.get_scores(crop_name)["feasibility"]
+                    "crop_name": crop,
+                    "technical_score": random.uniform(0.6, 0.9),
+                    "market_score": random.uniform(0.6, 0.9),
+                    "esg_score": random.uniform(0.6, 0.9),
+                    "regulatory_score": random.uniform(0.6, 0.9),
+                    "predicted_feasibility": random.uniform(0.7, 0.95)
                 }
+                for crop in VALID_CROPS
             ]
         }
+
         return jsonify(response_data), 200
     except Exception as e:
         logging.error(f"Error processing request: {e}")
