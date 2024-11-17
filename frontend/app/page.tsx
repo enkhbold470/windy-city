@@ -69,29 +69,6 @@ export default function Home() {
     },
   ];
 
-  const userAvatars = [
-    {
-      src: "https://media.licdn.com/dms/image/v2/D5603AQG7_3TKVKyh9Q/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1726541283569?e=1736985600&v=beta&t=NPJ33Tpo-saWeyZzECE94-hmtGPdP90L2v7eRk3N2ls",
-      alt: "User avatar 1",
-    },
-    {
-      src: "https://media.licdn.com/dms/image/v2/D5603AQEk7Wkcz7o42w/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1730736646752?e=1736985600&v=beta&t=bq-1SbZBzZ-_sKgAVrOcVyxQ4RaroLUJIlgh1w5vQtg",
-      alt: "User avatar 2",
-    },
-    {
-      src: "https://media.licdn.com/dms/image/v2/D5603AQHtKpb9OcC7JQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1705957050541?e=1736985600&v=beta&t=1QuI_AafLUijxOrNt945aDA9vTyWGXO-oRuYpa8p6bg",
-      alt: "User avatar 3",
-    },
-    {
-      src: "/assets/Mohamed-Abdelmeguid-Headshot.webp",
-      alt: "User avatar 4",
-    },
-    {
-      src: "/assets/Nikita-Agrawal-Profile-Photo.jpg",
-      alt: "User avatar 5",
-    },
-  ];
-
   const scrollVariants = {
     animate: {
       x: ["0%", "-100%"], // Smooth scrolling from start to end
@@ -113,19 +90,7 @@ export default function Home() {
             <AnimatedSection />
           </h1>
           <div className="mt-12 flex justify-center items-center text-gray-600">
-            <div className="flex items-center space-x-2">
-              {userAvatars.map((avatar, index) => (
-                <Image
-                  key={index}
-                  src={avatar.src}
-                  alt={avatar.alt}
-                  width={32}
-                  height={32}
-                  className="rounded-full border-2 border-white"
-                />
-              ))}
-            </div>
-            <p className="ml-10 text-sm">
+            <p className="text-sm">
               Founded in Boston, MA at MIT Energy Hackathon
             </p>
           </div>
@@ -138,9 +103,11 @@ export default function Home() {
               className="flex gap-8" // 12px gap between the logos
               variants={scrollVariants}
               animate="animate"
+              initial={{ opacity: 0 }} // Set initial opacity
               style={{
                 width: `${logos.length * 100 + (logos.length - 1) * 12}px`, // Total width of logos + gaps
               }}
+              exit={{ opacity: 1 }} // Set final opacity
             >
               {logos.concat(logos).map((logo, index) => (
                 <div key={index} className="flex-shrink-0">
@@ -186,6 +153,7 @@ export default function Home() {
               <p className="text-sm text-gray-600">
                 Create sleek looking data visualizations.
               </p>
+              <button className="try-it-out-btn">Try it Out</button>
             </div>
 
             {/* Category 2 (Insights) */}
@@ -207,6 +175,7 @@ export default function Home() {
               <p className="text-sm text-gray-600">
                 Ask complex questions and receive actionable insights.
               </p>
+              <button className="try-it-out-btn">Try it Out</button>
             </div>
 
             {/* Category 3 (Advanced Analysis) */}
@@ -228,6 +197,7 @@ export default function Home() {
               <p className="text-sm text-gray-600">
                 Perform predictive modeling and advanced data forecasting.
               </p>
+              <button className="try-it-out-btn">Try it Out</button>
             </div>
 
             {/* Category 4 (Reports) */}
@@ -249,6 +219,7 @@ export default function Home() {
               <p className="text-sm text-gray-600">
                 Generate polished reports and summaries effortlessly.
               </p>
+              <button className="try-it-out-btn">Try it Out</button>
             </div>
           </div>
 

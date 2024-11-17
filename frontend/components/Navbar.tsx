@@ -29,7 +29,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="border-b overflow-hidden">
+    <header className="border-b overflow-hidden bg-green-100">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center text-2xl font-bold">
           <Link href="/">
@@ -42,7 +42,11 @@ export default function Navbar() {
           </Link>
         </div>
 
-        <Tabs defaultValue="home" onValueChange={handleTabChange}>
+        <Tabs
+          defaultValue="home"
+          onValueChange={handleTabChange}
+          className="text-xl"
+        >
           <TabsList>
             <TabsTrigger value="home">Home</TabsTrigger>
             <TabsTrigger value="insights">Crop Insights</TabsTrigger>

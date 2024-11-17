@@ -1,7 +1,31 @@
 import { ArrowRight, Leaf, Microscope, Sprout } from "lucide-react";
+import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
+const userAvatars = [
+  {
+    src: "https://media.licdn.com/dms/image/v2/D5603AQG7_3TKVKyh9Q/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1726541283569?e=1736985600&v=beta&t=NPJ33Tpo-saWeyZzECE94-hmtGPdP90L2v7eRk3N2ls",
+    alt: "User avatar 1",
+  },
+  {
+    src: "https://media.licdn.com/dms/image/v2/D5603AQEk7Wkcz7o42w/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1730736646752?e=1736985600&v=beta&t=bq-1SbZBzZ-_sKgAVrOcVyxQ4RaroLUJIlgh1w5vQtg",
+    alt: "User avatar 2",
+  },
+  {
+    src: "https://media.licdn.com/dms/image/v2/D5603AQHtKpb9OcC7JQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1705957050541?e=1736985600&v=beta&t=1QuI_AafLUijxOrNt945aDA9vTyWGXO-oRuYpa8p6bg",
+    alt: "User avatar 3",
+  },
+  {
+    src: "/assets/Mohamed-Abdelmeguid-Headshot.webp",
+    alt: "User avatar 4",
+  },
+  {
+    src: "/assets/Nikita-Agrawal-Profile-Photo.jpg",
+    alt: "User avatar 5",
+  },
+];
 
 export default function About() {
   return (
@@ -11,25 +35,21 @@ export default function About() {
           About Windy City and Our Mission
         </h1>
 
-        {/* <div className="mb-12 relative">
-          <Image
-            src="/placeholder.svg?height=400&width=800"
-            alt="Windy City Lab"
-            width={800}
-            height={400}
-            className="rounded-lg shadow-lg"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
-          <div className="absolute bottom-4 left-4 right-4  ">
-            <h2 className="text-2xl font-semibold mb-2">
-              Revolutionizing Agriculture Through Science
-            </h2>
-            <p>
-              Windy City is at the forefront of plant cell agriculture,
-              developing sustainable solutions for the future of farming.
-            </p>
+        {/* Team Section */}
+        <div className="mb-8 flex justify-center items-center">
+          <div className="flex items-center space-x-2">
+            {userAvatars.map((avatar, index) => (
+              <Image
+                key={index}
+                src={avatar.src}
+                alt={avatar.alt}
+                width={100}
+                height={100}
+                className="rounded-full border-2 border-white"
+              />
+            ))}
           </div>
-        </div> */}
+        </div>
 
         <Card className="mb-8">
           <CardHeader>

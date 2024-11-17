@@ -117,7 +117,7 @@ export default function PlantCropInput() {
   }
 
   return (
-    <div className="my-5 py-8 mx-20 gap-4">
+    <div className="my-5 py-8 mx-20 gap-4 text-lg">
       <Loader
         loadingStates={loadingStates}
         loading={loading}

@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 const AnimatedSection = () => {
   const [position, setPosition] = useState(300); // Initial position (300px below)
@@ -32,7 +32,7 @@ const AnimatedSection = () => {
       style={{
         transform: `translateY(${position}px)`, // Move up dynamically
         opacity: opacity, // Fade in dynamically
-        transition: 'opacity 0.1s ease-out', // Smooth fading effect
+        transition: "opacity 0.1s ease-out", // Smooth fading effect
       }}
       className="text-center"
     >
@@ -46,10 +46,9 @@ const AnimatedSection = () => {
       </p>
       <div className="flex justify-center">
         <a href="/dashboard">
-        <button className="bg-blue-600 text-white hover:bg-blue-700 transition duration-300 px-8 py-4 text-lg rounded-lg">
+          <button className="bg-green-500 text-white py-6 px-12 text-[1.5rem] font-bold rounded-lg cursor-pointer transition-all duration-300 shadow-md hover:bg-green-600 hover:shadow-lg active:bg-green-700 active:scale-95">
             Try it Out!
-            </button>
-
+          </button>
         </a>
       </div>
     </div>
