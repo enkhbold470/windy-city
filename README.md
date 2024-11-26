@@ -16,6 +16,10 @@ Windy City is an innovative platform focused on plant cell agriculture, combinin
 
 ### Frontend
 
+
+https://github.com/user-attachments/assets/6a73bb40-3c78-4ad8-a0f7-369b71931978
+
+
 - Next.js 15.0
 - React 18.3
 - TypeScript
